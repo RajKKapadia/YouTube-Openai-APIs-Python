@@ -13,19 +13,10 @@ def create_embeddings(prompt: str) -> dict:
     Returns: dictionary with information from Openai API call
     '''
     try:
-        url = f"{config.BASE_URL}/chat/completions"
+        url = f"{config.BASE_URL}/embeddings"
         payload = {
-            "model": "gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "system",
-                    "content": "You are a helpful assistant."
-                },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
+            "model": "text-embedding-ada-002",
+            "input": prompt
         }
         headers = {
             "Content-Type": "application/json",
